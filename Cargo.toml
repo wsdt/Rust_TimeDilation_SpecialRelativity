@@ -1,0 +1,6 @@
+[package]
+name = "rust_time_dilation_specialrelativity"
+version = "0.0.1"
+authors = ["kevin <kevin.riedl.privat@gmail.com>"]
+
+[dependencies]
