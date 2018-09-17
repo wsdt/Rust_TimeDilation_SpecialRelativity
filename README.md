@@ -1,4 +1,4 @@
-# Rust_TimeDilation_SpecialRelativity [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/wsdt/Rust_TimeDilation_SpecialRelativity/graphs/commit-activity) [![Generic badge](https://img.shields.io/badge/In-RUST-BLUE.svg)](https://www.rust-lang.org) [![GitHub license](https://img.shields.io/github/license/wsdt/Rust_TimeDilation_SpecialRelativity.svg)](https://github.com/wsdt/Rust_TimeDilation_SpecialRelativity/blob/master/LICENSE)
+# Rust_TimeDilation_SpecialRelativity [![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://GitHub.com/wsdt/Rust_TimeDilation_SpecialRelativity/graphs/commit-activity) [![Generic badge](https://img.shields.io/badge/In-RUST-BLUE.svg)](https://www.rust-lang.org) [![GitHub license](https://img.shields.io/github/license/wsdt/Rust_TimeDilation_SpecialRelativity.svg)](https://github.com/wsdt/Rust_TimeDilation_SpecialRelativity/blob/master/LICENSE)
 Calculate the time dilation according to Einsteins special relativity theory.
 
 ## Please be clement
