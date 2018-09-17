@@ -4,9 +4,10 @@ use std::io;
 #[macro_use] extern crate lazy_static;
 extern crate regex;
 use regex::Regex;
+use std::str::FromStr;
 
 fn main() {
-    print_main_menu();
+    loop { print_main_menu()};
 }
 
 fn print_main_menu() {
@@ -18,11 +19,12 @@ fn print_main_menu() {
     println!("Input proper time and relative velocity separated by a space: ");
     let mut input = String::new();
     match io::stdin().read_line(&mut input) {
-        Ok(n) => {
+        Ok(_n) => {
             if is_input_valid(&input) {
                 let input_vec: Vec<&str> = input.split(" ").collect();
-                println!("{}",input_vec.get(0).unwrap_or(&"0"));
-                println!("Result: {}",time_dilation_module::calc_time_dilation(1.0,299792.457));
+                println!("Result: {}",time_dilation_module::calc_time_dilation(
+                    f64::from_str(input_vec.get(0).unwrap_or(&"0")),
+                    f64::from_str(input_vec.get(1).unwrap_or(&"0"))));
             } else {
                 println!("Error: Input not valid.\nPlease provide 2 numbers separated by space!");
                 print_main_menu();
@@ -37,7 +39,7 @@ fn print_main_menu() {
 fn is_input_valid(input: &String) -> bool {
     //Lazy static to compile regex just once.
     lazy_static! {
-        static ref RE: Regex = Regex::new("^[0-9]+ [0-9]+$").unwrap();
+        static ref RE: Regex = Regex::new("[0-9]+ [0-9]+").unwrap();
     }
     //return result
     RE.is_match(input)
