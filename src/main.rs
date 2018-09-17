@@ -4,7 +4,6 @@ use std::io;
 #[macro_use] extern crate lazy_static;
 extern crate regex;
 use regex::Regex;
-use std::str::FromStr;
 
 fn main() {
     loop { print_main_menu()};
@@ -21,10 +20,11 @@ fn print_main_menu() {
     match io::stdin().read_line(&mut input) {
         Ok(_n) => {
             if is_input_valid(&input) {
-                let input_vec: Vec<&str> = input.split(" ").collect();
-                println!("Result: {}",time_dilation_module::calc_time_dilation(
-                    f64::from_str(input_vec.get(0).unwrap_or(&"0")),
-                    f64::from_str(input_vec.get(1).unwrap_or(&"0"))));
+                let input_str: std::str = input.split(" ").collect().as_slice();
+                println!("{}",input_str);
+                /*println!("Result: {}",time_dilation_module::calc_time_dilation(
+                    input_vec.get(0).unwrap_or(&"0").parse::<f64>().unwrap(),
+                    input_vec.get(1).unwrap_or(&"0").parse::<f64>().unwrap()));*/
             } else {
                 println!("Error: Input not valid.\nPlease provide 2 numbers separated by space!");
                 print_main_menu();
