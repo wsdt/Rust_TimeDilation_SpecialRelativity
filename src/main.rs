@@ -16,22 +16,21 @@ fn print_main_menu() {
         As far as I know, it's the first one which has been written in Rust!");
 
     println!("Input proper time and relative velocity separated by a space: ");
-    let mut input = String::new();
-    match io::stdin().read_line(&mut input) {
-        Ok(_n) => {
-            if is_input_valid(&input) {
-                let input_str: std::str = input.split(" ").collect().as_slice();
-                println!("{}",input_str);
-                /*println!("Result: {}",time_dilation_module::calc_time_dilation(
-                    input_vec.get(0).unwrap_or(&"0").parse::<f64>().unwrap(),
-                    input_vec.get(1).unwrap_or(&"0").parse::<f64>().unwrap()));*/
-            } else {
-                println!("Error: Input not valid.\nPlease provide 2 numbers separated by space!");
-                print_main_menu();
-                return;
-            }
-        }
-        Err(error) => println!("ERROR: Could not read userInput -> {}", error)
+
+    let mut a_str = String::new();
+    io::stdin().read_line(&mut a_str).expect("read_error");
+    if is_input_valid(&a_str) {
+        let user_input: Vec<f64> = a_str.split_whitespace()
+            .map(|x| x.parse::<f64>().expect("parse error"))
+            .collect::<Vec<f64>>();
+
+        println!("Time-Dilation: {}",time_dilation_module::calc_time_dilation(
+            *user_input.get(0).unwrap(),
+            *user_input.get(1).unwrap()));
+    } else {
+        println!("Error: Input not valid.\nPlease provide 2 numbers separated by space!");
+        print_main_menu();
+        return;
     }
 }
 
